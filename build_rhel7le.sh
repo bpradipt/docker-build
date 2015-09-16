@@ -55,9 +55,11 @@ cd ${BUILD_DIR}
 git clone https://github.com/seccomp/libseccomp.git
 cd libseccomp
 #Modify configure.ac to add explicit VERSION info
-#sed ...
+sed -i.bkp 's/VERSION_MAJOR=.*/VERSION=2.2.4\n&/' configure.ac
+./autogen.sh
 ./configure
 make install
+mv configure.ac.bkp configure.ac
 
 
 
