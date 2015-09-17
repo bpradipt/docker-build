@@ -115,8 +115,8 @@ curl https://github.com/bpradipt/docker/commit/567c796fba113bca56b4ebf82be93d813
 
 if [ ${BUILD_TYPE} == "dynamic" ]
 then
-    ./hack/make.sh dyngccgo
     sed -i.bkp 's/-ldl/-ldl -lselinux -lsepol -lpcre -llzma -lpthread -lsystemd-journal/g' hack/make/gccgo
+    ./hack/make.sh dyngccgo
 else
     sed -i.bkp 's/-ldl/-ldl -lselinux -lsepol -lpcre -llzma -lpthread/g' hack/make/gccgo
     ./hack/make.sh gccgo
